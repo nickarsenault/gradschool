@@ -1,0 +1,225 @@
+\documentclass[a4paper,12pt]{article} % This defines the style of your paper
+\usepackage[top = 2.5cm, bottom = 2.5cm, left = 2.5cm, right = 2.5cm]{geometry} 
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext}
+\usepackage[varvw]{newtxmath}
+\let\openbox\undefined
+\let\Bbbk\undefined
+\usepackage{multirow} % Multirow is for tables with multiple rows within one cell.
+\usepackage{booktabs} % For even nicer tables.
+\usepackage{graphicx} 
+\usepackage{setspace}
+\setlength{\parindent}{0mm}
+\usepackage{float}
+\usepackage{fancyhdr}
+%%%%%%%%%%%%%%%%%%%%Nick's Additional Packages%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath,amsthm,verbatim,amssymb,amsfonts,amscd, graphicx}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{bigints}
+\usepackage[mathscr]{eucal}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{pict2e}
+\usepackage{epic}
+\usepackage{hyperref}
+\usepackage{epstopdf} 
+\theoremstyle{plain}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{surfacecor}{Corollary 1}
+\newtheorem{conjecture}{Conjecture} 
+\newtheorem{question}{Question} 
+\theoremstyle{definition}
+\usepackage{indentfirst}
+\newtheorem{definition}{Definition}
+\graphicspath{{/home/nickarsenault/Documents/HonorsThesis/Figures/}}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\newtcbtheorem[number within=section]{mytheo}{Theorem}%
+{colback=white!5,colframe=black!35!black,fonttitle=\bfseries}{th}
+
+
+% Custom Macros
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\open}{\mathcal{O}}
+\newcommand{\cantor}{\mathcal{C}}
+\newcommand{\nbr}{\mathcal{N}}
+\newcommand{\cov}{\mathcal{U}}
+\newcommand{\m}{m_*}
+\newcommand{\D}{\Omega}
+\newcommand{\bD}{{\partial \Omega}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\lnorm}{\left\|}
+\newcommand{\rnorm}{\right\|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\p}{^\prime}
+\newcommand{\pp}{^{\prime \prime}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\nlim}{\lim_{n \to \infty}}
+\newcommand{\suminf}{\sum_{n=1}^{\infty}}
+\newcommand{\powsum}{\sum_{n=0}^{\infty}}
+\newcommand{\G}{\Gamma}
+\newcommand{\hil}{\mathcal{H}}
+\renewcommand{\c}{^{\mathsf{c}}}
+\newcommand{\supp}{\text{supp}}
+\newcommand{\finish}{\textcolor{red}{\textbf{Finish}}}
+\newcommand{\half}{\textcolor{orange}{\textbf{Half}}}
+\newcommand{\good}{\textcolor{green}{\textbf{Good}}}
+\usepackage{xparse}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\cycle}{ O{\;} m }
+ {
+  (
+  \alec_cycle:nn { #1 } { #2 }
+  )
+ }
+
+\seq_new:N \l_alec_cycle_seq
+\cs_new_protected:Npn \alec_cycle:nn #1 #2
+ {
+  \seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
+  \seq_use:Nn \l_alec_cycle_seq { #1 }
+ }
+\ExplSyntaxOff
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+\usepackage{thmtools}
+
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=1em,
+numberwithin=section
+]{exstyle}
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=1em,
+headpunct={},
+qed=$\blacktriangleleft$,
+numbered=no
+]{solstyle}
+\declaretheorem[style=exstyle]{example}
+\declaretheorem[style=solstyle]{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3. Header (and Footer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% To make our document nice we want a header and number the pages in the footer.
+
+\pagestyle{fancy} % With this command we can customize the header style.
+
+\fancyhf{} % This makes sure we do not have other information in our header or footer.
+
+\begin{document}
+\thispagestyle{empty} % This command disables the header on the first page. 
+
+\begin{tabular}{p{15.5cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf MA137} \\
+University of Kentucky \\ Fall 2021 \\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+
+\vspace*{0.3cm} % Now we want to add some vertical space in between the line and our title.
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf Exam 2 Review} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+\end{center}  
+
+\vspace{0.4cm}
+
+\begin{enumerate}
+
+\item[\underline{\textbf{\#1}}] \textit{Use the chain rule to find the derivative of the following functions:
+  \begin{itemize}
+    \item[(\text{a.})] $f(N) = (1+3N^2)^3$
+  \item[(\text{b.})] $g(s) = \sqrt[4]{5s^3-3}   $
+  \end{itemize}}
+\newpage
+\item[\underline{\textbf{\#2}}] \textit{\begin{itemize}
+    \item[(\text{a.})] The following limit represents the derivative $f\p(x_0)$ of a function $f$ at a point $x_0$ 
+      \begin{align*}
+        \lim_{h\to 0}\frac{4(2+h)^3-32}{h}
+      \end{align*}
+      Find $f$ and $x_0$. What is the value of the limit?
+    \item[(\text{b.})] Let $g(x) = 5x^3-2x +\frac{2}{x} + \pi^2$. Compute $g\p(x)$.
+  \end{itemize}}
+ \newpage
+\item[\underline{\textbf{\#3}}] \textit{Explain how to use Intermediate Value Theorem to conculde that the equation
+  \begin{align*}
+   \sqrt{x^2+2} = 2
+  \end{align*}
+has a solution in the interval $[1,2]$.}
+\newpage
+\item[\underline{\textbf{\#4}}] \textit{Suppose a function $y = y(x)$ is implicitly defined by the equation
+  \begin{align*}
+    y^3x^{4} -10x +y = -3
+  \end{align*}
+what is $\frac{dy}{dx}$ at the point $(2,1)$?}
+\newpage
+\item[\underline{\textbf{\#5}}] \textit{Suppose 
+  \begin{align*}
+    F(x) = \frac{1-x^2}{h(x)} 
+  \end{align*}
+and $h(2)=-1$ and $h\p(2)=-2$. Find  $F\p(2)$.}
+\newpage
+\item[\underline{\textbf{\#6}}] \textit{Assume that $f(x)$ is everywhere continuous and it is given to you that
+  \begin{align*}
+    \lim_{x \to 7} \frac{f(x)+9}{x-7}=10.
+\end{align*}
+It follows that $y = \text{?}$ is the equation of the tangent line at the point $(?,?)$.}
+\newpage
+\item[\underline{\textbf{\#7}}] \textit{Suppose that $-8x -22\le f(x) \le x^2 -2x -13$ for all $x$. Use this information and the Sandwich Theorem to compute 
+  \begin{align*}
+    \lim_{x\to -3} f(x).
+  \end{align*}}
+\newpage
+\item[\underline{\textbf{\#8}}] \textit{Compute
+  \begin{align*}
+    \lim_{h\to 0} \frac{(h+4)^2 -16}{h}.
+  \end{align*}}
+\newpage
+\item[\underline{\textbf{\#9}}] \textit{ Consider the function
+  \begin{align*}
+    f(x) = \begin{cases}
+        c + 2x & x < 4 \\
+        \frac{96}{x + c} & x \ge 4
+    \end{cases}
+  \end{align*}
+Find all the values of $c$ such that $f(x)$ is continuous at $c = 4$.}
+\newpage
+\item[\underline{\textbf{\#10}}] \textit{Find the value of the limit 
+  \begin{align*}
+  \lim_{x \to 0} \frac{\tan(2x)}{3x}.
+  \end{align*}}
+\newpage
+\item[\underline{\textbf{\#11}}] \textit{Suppose $y = 3x +2$ is the equation of the tangent line to a function $f$ at the point $(1,f(1))$. Find $f(1)$ and $f\p(1)$.}
+\newpage
+
+\item[\underline{\textbf{\#12}}] \textit{After a spill, a circular oil slick grows on the surface of a lake.  If the radius of the oil slick is increasing at a rate of $\frac{1}{2}$ foot per minute, how fast is the area of the oil slick increasing when its radus is $4$ feet?}
+\newpage
+\end{enumerate}
+
+\end{document}
