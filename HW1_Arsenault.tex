@@ -181,7 +181,40 @@ Thus,
 \begin{align*}
   \abs{\frac{w-z}{1 - \overline{w} z}} = 1.
 \end{align*}
-\item[(b.)]
+\item[(b.)]  
+  \begin{itemize}
+    \item[(\textit{i.})]
+      For $w \in \mathbb{D}$ fixed and $z \in \mathbb{D}$, we have
+      \begin{align*}
+        \abs{F(z)} = \abs{\frac{w-z}{1-\overline{w}z}} < 1
+      \end{align*}
+      by part (a.).  Thus, $F$ maps $\mathbb{D}$ to itself.  Secondly,
+      \begin{align*}
+        \pdv{F}{\overline{z}} = \pdv{\overline{z}} \frac{w-z}{1 - \overline{w}z} = 0.
+      \end{align*}
+     Hence, $F$ is holomorphic. 
+    \item[(\textit{ii.})]  First,
+      \begin{align*}
+        F(0) = \frac{w}{1 - \overline{w}\cdot 0} = w
+      \end{align*}
+      and secondly,
+      \begin{align*}
+        F(w) = \frac{w-w}{1 - \overline{w}w} = 0.
+      \end{align*}
+      We see that $F$ swaps the elements $0$ and $w$.
+    \item[(\textit{iii.})]  If $\abs{z} = 1$, then by (a.), we have
+      \begin{align*}
+        \abs{F(z)} = \abs{\frac{w-z}{1-\overline{w}z}} = 1.
+      \end{align*}
+    \item[(\textit{iv.})]  Lastly, calculating $F \circ F$, gives
+      \begin{align*}
+        F(F(z)) &= \frac{w - \frac{w-z}{1-\overline{w}z}}{1 - \overline{w} \frac{w-z}{1-\overline{w}z}} \\
+         &= \frac{\frac{w - w \overline{w}z}{1-\overline{w}z} - \frac{w-z}{1-\overline{w}z}}{\frac{1-\overline{w}z}{1-\overline{w}z} - \frac{\overline{w}w-\overline{w}z}{1-\overline{w}z}} \\
+         &= \frac{\frac{- w \overline{w}z + z}{1-\overline{w}z}}{\frac{1-\overline{w}w}{1-\overline{w}z}} \\
+        &=  z \\
+      \end{align*}
+      Therefore, $F$ is a bijection.
+  \end{itemize}
      \end{itemize}
    \item[\textbf{\# 13.}] 
    \item[\textbf{\# 20.}] 
