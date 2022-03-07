@@ -1,0 +1,281 @@
+\documentclass[a4paper,12pt]{article} % This defines the style of your paper
+\usepackage[top = 2.5cm, bottom = 2.5cm, left = 2.5cm, right = 2.5cm]{geometry} 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext}
+\usepackage[varvw]{newtxmath}
+\let\openbox\undefined
+\let\Bbbk\undefined
+\usepackage{multirow} % Multirow is for tables with multiple rows within one cell.
+\usepackage{booktabs} % For even nicer tables.
+\usepackage{graphicx} 
+\usepackage{setspace}
+\setlength{\parindent}{0mm}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,verbatim,amssymb,amsfonts,amscd, graphicx}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{bigints}
+\usepackage[mathscr]{eucal}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{transparent}
+\usepackage{import}
+\usepackage{pict2e}
+\usepackage{epic}
+\usepackage{epstopdf} 
+\theoremstyle{plain}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{surfacecor}{Corollary 1}
+\newtheorem{conjecture}{Conjecture} 
+\newtheorem{question}{Question} 
+\theoremstyle{definition}
+\usepackage{indentfirst}
+\newtheorem{definition}{Definition}
+\graphicspath{{/home/nickarsenault/Documents/HonorsThesis/Figures/}}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\newtcbtheorem[number within=section]{mytheo}{Theorem}%
+{colback=white!5,colframe=black!35!black,fonttitle=\bfseries}{th}
+% Custom Macros
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\open}{\mathcal{O}}
+\newcommand{\cantor}{\mathcal{C}}
+\newcommand{\nbr}{\mathcal{N}}
+\newcommand{\cov}{\mathcal{U}}
+\newcommand{\m}{m_*}
+\newcommand{\D}{\Omega}
+\newcommand{\bD}{{\partial \Omega}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\lnorm}{\left\|}
+\newcommand{\rnorm}{\right\|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\p}{^\prime}
+\newcommand{\pp}{^{\prime \prime}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\nlim}{\lim_{n \to \infty}}
+\newcommand{\suminf}{\sum_{n=1}^{\infty}}
+\newcommand{\powsum}{\sum_{n=0}^{\infty}}
+\newcommand{\G}{\Gamma}
+\renewcommand{\c}{^{\mathsf{c}}}
+\newcommand{\supp}{\text{supp}}
+\newcommand{\finish}{\textcolor{red}{\textbf{Finish}}}
+\newcommand{\half}{\textcolor{orange}{\textbf{Half}}}
+\newcommand{\good}{\textcolor{green}{\textbf{Good}}}
+\usepackage{xparse}
+\ExplSyntaxOn
+\NewDocumentCommand{\cycle}{ O{\;} m }
+ {
+  (
+  \alec_cycle:nn { #1 } { #2 }
+  )
+ }
+
+\seq_new:N \l_alec_cycle_seq
+\cs_new_protected:Npn \alec_cycle:nn #1 #2
+ {
+  \seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
+  \seq_use:Nn \l_alec_cycle_seq { #1 }
+ }
+\ExplSyntaxOff
+
+\usepackage{thmtools}
+
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=1em,
+numberwithin=section
+]{exstyle}
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=1em,
+headpunct={},
+qed=$\blacktriangleleft$,
+numbered=no
+]{solstyle}
+\declaretheorem[style=exstyle]{example}
+\declaretheorem[style=solstyle]{solution}
+\pagestyle{fancy} % With this command we can customize the header style.
+\fancyhf{} % This makes sure we do not have other information in our header or footer.
+\lhead{\footnotesize Complex Analysis}% \lhead puts text in the top left corner. \footnotesize sets our font to a smaller size.
+\rhead{\footnotesize Arsenault} %<---- Fill in your lastnames.
+\cfoot{\footnotesize \thepage} 
+\begin{document}
+\thispagestyle{empty} % This command disables the header on the first page. 
+\begin{tabular}{p{15.5cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf Complex Analysis} \\
+University of Kentucky \\ Spring 2022 \\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+
+\vspace*{0.3cm} % Now we want to add some vertical space in between the line and our title.
+
+\begin{center} % Everything within the center environment is centered.
+  {\Large \bf Homework 3} % <---- Don't forget to put in the right number
+	\vspace{2mm} \\
+  \textbf{Nick Arsenault}
+\end{center}  
+\vspace{0.4cm}
+ \begin{enumerate}
+   \item[\textbf{\# 1.}]  Using the hint given, by Cauchy's Theorem \textcolor{red}{Include Contour again}
+     \begin{align*}
+       \int_{\Gamma} e^{-z^2} dz = \int_{\gamma_1} e^{-z^2} dz + \int_{\gamma_2} e^{-z^2}dz = \int_{\gamma_3} e^{-z^2} dz = 0.
+     \end{align*}
+     Moreover, 
+     \begin{align*}
+       -\int_{\gamma_3} e^{-z^2} dz &= \int_{0}^{R} e^{-(e^{i \frac{\pi}{4}})^2} e^{i \frac{\pi}{4}} dt \\
+                                    &= e^{i\frac{\pi}{4}} \int_{0}^{R} e^{-it^2} dt \\
+                                    &= e^{i \frac{\pi}{4}} \int_{0}^{R} \cos(t^2) - i \sin(t^2) dt.
+     \end{align*}
+     Thus, calculating the contour integral we will give the values of the Fresnel integrals.  First, we know that as $R \to \infty$,
+     \begin{align*}
+       e^{-i \frac{\pi}{4}}\int_{0}^{R} e^{-x^2} dx &= \frac{\sqrt{2}}{1+i}\frac{\sqrt{\pi} }{2} \\
+                                                    &= \frac{\sqrt{2\pi} }{2 + 2i} \\
+                                                    &= \frac{\sqrt{2\pi} -i \sqrt{2\pi} }{4}.
+     \end{align*}
+     Secondly, $\gamma_2$ can be parameterized by $z(t) = Re^{i\frac{\pi}{4}t}$ for $0 \le  t \le 1$.  Hence,
+     \begin{align*}
+       \abs{\int_{\gamma_2} e^{-z^2}dz} &= \abs{i R \int_{0}^{\frac{\pi}{4}} e^{-R^2e^{2it}} e^{it}dt} \\
+                                        &\le R \int_{0}^{\frac{\pi}{4}} \abs{e^{-R^2e^{2it}}dt} \to 0
+     \end{align*}
+     as $R \to \infty$.  Therefore, we have that
+     \begin{align*}
+       \int_0^{\infty}\sin(x^2) dx = \int_0^{\infty} \cos(x^2)  dx = \frac{\sqrt{2\pi} }{4}.
+     \end{align*}
+   \item[\textbf{\# 2.}]  Using the hint that 
+     \begin{align*}
+       \int_{0}^{\infty} \frac{\sin(x)}{x} dx = \frac{1}{2i} \int_{-\infty}^{\infty}\frac{e^{ix} - 1}{x} dx
+     \end{align*}
+     we can evaluate the latter integral on the semi-circle contour, \textcolor{red}{Include the contour figure here}.  By Cauchy's Theorem
+     \begin{align*}
+      \int_{\Gamma} \frac{e^{iz}-1}{z}dz =  \int_{\gamma_1} \frac{e^{iz}-1}{z} dz +\int_{\gamma_R} \frac{e^{iz}-1}{z} dz  + \int_{\gamma_2} \frac{e^{iz}-1}{z} dz -\int_{\gamma_\eps} \frac{e^{iz}-1}{z} dz = 0.
+     \end{align*}
+     Therefore, we have
+     \begin{align*}
+       \int_{-R}^{-\eps} \frac{e^{ix}-1}{x} dx + \int_{\eps}^{R} \frac{e^{ix}-1}{x} dx  = \underbrace{\int_{\gamma_\eps} \frac{e^{iz}-1}{z}dz}_{:=I} - \underbrace{\int_{\gamma_R} \frac{e^{iz}-1}{z}}_{:=J}.
+     \end{align*}
+     Considering $I$ first, we can write
+     \begin{align*}
+       \frac{e^{iz}-1}{z} = i - \frac{z}{2} + E(z)
+     \end{align*}
+     where $E(z)$ contains the lower order terms.  However, since $E(z)$ is bounded we get
+     \begin{align*}
+       \abs{\int_{\gamma_\eps} \frac{e^{iz}-1}{z} dz} = \abs{\int_{\gamma_{\eps}}i dz + E(z)} \le i \pi \eps \to 0 
+     \end{align*}
+     as $\eps \to 0$.  Secondly, for $J$ we can parameterize $\gamma_R$ by $z(t) = Re^{it}$ for $0\le t \le \pi$.  Thus,
+     \begin{align*}
+       J &= i\int_{0}^{\pi}e^{iRe^{it}} - 1dt \\
+       &= - i \pi + i \int_{0}^{\pi} e^{iRe^{it}}dt
+     \end{align*}
+     Then
+     \begin{align*}
+     \abs{\int_{0}^{\pi} e^{iRe^{it}}dt} = \abs{-\frac{e^{-R}}{iR} +  \frac{e^{iR}}{R}} \to 0
+     \end{align*}
+     as $R \to \infty$.  Therefore, as $\eps \to 0$ and $R \to \infty$, we get
+     \begin{align*}
+       \int_{-\infty}^{\infty} \frac{e^{ix}-1}{x}dx = i\pi
+     \end{align*}
+     and hence
+     \begin{align*}
+       \int_{-\infty}^\infty \frac{\sin(x)}{x} dx = \frac{1}{2i} i \pi = \frac{\pi}{2}.
+     \end{align*}
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \item[\textbf{\# 7.}]  Notice that by Cauchy's integral formula we have
+     \begin{align*}
+       f'(0) = \frac{1}{2\pi i} \int_{\abs{\eta} = r} \frac{f(\eta)}{\eta^2} d\eta = \frac{1}{2 \pi i} \int_{\zeta = r} \frac{-f(-\zeta)}{\zeta^2} d \zeta.
+     \end{align*}
+     Hence, we can write
+     \begin{align*}
+       2 f'(0) = \frac{1}{2 \pi i} \int_{\abs{\zeta} = r} \frac{f(\zeta) - f(-\zeta)}{\zeta^2} d \zeta.
+     \end{align*}
+     This gives
+     \begin{align*}
+       \abs{2 f'(0)} &= \abs{\frac{1}{2 \pi i} \int_{\abs{\zeta} = r} \frac{f(\zeta) - f(-\zeta)}{\zeta^2} d \zeta} \\
+                     &\le  \frac{d}{r}.
+     \end{align*}
+     This holds for all $0 < r < 1$ and thus $2\abs{f'(0)} \le d$.  If $f(z) = a_0 + a_1z$, then we get
+     \begin{align*}
+       2 f'(0) = \int_{\abs{\zeta} = r} \frac{2a_0}{\zeta}.
+     \end{align*}
+     Hence,
+     \begin{align*}
+       2 \abs{f'(0)} = \abs{\frac{2a_1}{2\pi i} \int_{\abs{\zeta} = r} \frac{1}{\zeta} d \zeta} = 2\abs{a_1} = d. 
+     \end{align*}
+     To see this, notice $d = \sup_{z,w \in \mathbb{D}} \abs{(a_0 + a_1 z) - (a_0 + a_1 w)} = \sup_{z,w} \abs{a_1}\abs{z-w} = 2 \abs{a_1}$.
+
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+
+   \item[\textbf{\# 8.}]  For every $x \in \R$ take $D_r(x)$ to be the disc of radius $r$ centered at $x$, with $0 < r < 1$.  Since $f$ is holomorphic in $D_r(x)$, we use Cauchy's inequality to get
+     \begin{align*}
+       \abs{f^{(n)}(x)} &\le \frac{n!}{r^{n}} A(1+\abs{z})^{\eta} \\
+       &\le \frac{n!}{r^{n}} A(1 + \abs{x + r})^{\eta} \\
+       &\le \frac{n!}{r^{n}} A(1 + \abs{x} + r)^{\eta} \\
+       &\le \frac{n!}{r^{n}} A(1 + \abs{x} + r + \abs{x}r)^{\eta} \\
+       &\le \frac{n!}{r^{n}} A(1 + \abs{x})^{\eta}(1 + r)^{\eta} \\
+     \end{align*}
+   which holds for $\eta \ge 0$.  Thus, we take $A_n = \frac{n!}{r^{n}} (1+r)^{\eta}$.  If $\eta < 0$, we use the reverse triangle inequality to get $\abs{x} - \abs{z} \le  \abs{x-z} \le  r$.  Therefore,
+   \begin{align*}
+     \abs{f^{(n)}(x)} &\le  \frac{n!}{r^{n}} A(1 + r - \abs{x})^{\eta} \\
+                      &\le  \frac{n!}{r^{n}} A(1 - r + \abs{x} - r\abs{x})^{\eta} \\
+                      &= \frac{n!}{r^{n}} A(1-r)^{\eta}(1 + \abs{x})^\eta.
+   \end{align*}
+   
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ \item[\textbf{\# 9.}]    
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \item[\textbf{\# 11.}] 
+   \begin{itemize}
+     \item[(a.)] Since $R >  \abs{z}$, we have that for $0 < R < R_0$
+       \begin{align*}
+         \int_{\abs{\zeta} = R} \frac{f(\zeta)}{(\zeta - w)} d \zeta = 0.
+       \end{align*}
+      Applying Cauchy's integral formula gives
+      \begin{align*}
+        f(z) &= \frac{1}{2 \pi i}\int_{\abs{\zeta} = R} \frac{f(\zeta)}{(\zeta - z)} d \zeta \\
+             &= \frac{1}{2 \pi i}\int_{\abs{\zeta} = R} \frac{f(\zeta)}{(\zeta - z)} + \frac{f(\zeta)}{(\zeta - \zeta \overline{\zeta}\frac{1}{\overline{z}})} d \zeta \\
+             &= \frac{1}{2 \pi i}\int_{\abs{\zeta} = R} f(\zeta)\left(\frac{1}{(\zeta - z)} + \frac{1}{(\zeta - \zeta \overline{\zeta}\frac{1}{\overline{z}})}\right) d \zeta \\
+             &= \frac{1}{2 \pi i}\int_{\abs{\zeta} = R} f(\zeta)\left(\frac{1}{(\zeta - z)} + \frac{\overline{z}}{\zeta(\overline{\zeta} - \overline{z})}\right) d \zeta \\
+             &= \frac{1}{2 \pi i}\int_{\abs{\zeta} = R} \frac{f(\zeta)}{\zeta}\left(\frac{\zeta \overline{\zeta} - z \overline{z}}{(\zeta - z)(\overline{\zeta} - \overline{z})} \right) d \zeta.
+      \end{align*}
+      However, the term in parentheses is precisely
+      \begin{align*}
+        \Re\left( \frac{\zeta + z}{\zeta - z} \right).
+      \end{align*}
+      If we now parameterize the circle with radius $R$ by $z(t) = Re^{i\varphi}$ where $0\le \varphi \le 2 \pi$.  This gives
+      \begin{align*}
+        f(z) = \frac{1}{2\pi} \int_0^{2\pi} f(Re^{i \varphi}) \Re\left( \frac{Re^{i\varphi} + z}{Re^{i\varphi} - z} \right) d\varphi.
+      \end{align*}
+     \item[(b.)] Recall that $\Re(z) = \frac{z + \overline{z}}{2}$.  Thus,
+   \begin{align*}
+     \Re\left( \frac{Re^{i\gamma} + r}{Re^{i\gamma} - r} \right) &= \frac{1}{2}\left(\frac{(Re^{i\gamma} + r)(Re^{-i\gamma} - r) + (Re^{i\gamma} - r)(Re^{-i\gamma}+r)}{(Re^{i\gamma}-r)(Re^{-i\gamma}-r)}\right) \\
+                                                                 &= \frac{R^{2} - r^2}{R^2 - Rr(e^{i\gamma} + e^{-i\gamma}) + r^2} \\
+                                                                 &= \frac{R^{2} - r^2}{R^2 - Rr\cos\gamma + r^2} \\
+   \end{align*}
+   \end{itemize}
+ 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \item[\textbf{\# 12.}]  
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \end{enumerate} 
+\end{document}
+
+
