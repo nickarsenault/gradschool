@@ -1,0 +1,157 @@
+\documentclass[11pt]{amsart}
+%\documentclass[reqno,10p]{amsart}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{version, amsmath, amssymb, mathtools}
+%\usepackage{latexsym}\usepackage{epsfig,graphics} \usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{amsthm, amsopn, amsfonts}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{mathrsfs}
+\usepackage{slashed}
+\hypersetup{urlcolor=blue, citecolor=blue}
+\usepackage{physics}
+\usepackage[all,cmtip]{xy}
+%\setlength{\abovedisplayskip}{0.2in}
+%\setlength{\belowdisplayskip}{0.2in}
+%\setlength\evensidemargin{0in}
+%\setlength\oddsidemargin{0in}
+%\setlength\evensidemargin{.5in}
+%\setlength\textheight{8.1in}
+%\setlength\textheight{8.65in} \setlength\textwidth{6.5in}
+%\setlength\topmargin{-0.0in} \setlength\parskip{5pt}
+
+%\usepackage{showkeys}
+\usepackage[color=yellow]{todonotes}
+
+%\def\pas{\slashed{\pa}}
+\def\pas{\text{$\pa\mkern -11.0mu$\slash}}
+\newcommand{\rr}{\tilde r}
+%\newcommand{\cal}{\mathcal}
+\renewcommand{\tt}{ \tilde t}
+\newcommand{\varespilon}{\varepsilon}
+\newcommand{\B}{{\underline{L}}}
+\newcommand{\G}{{\Lambda}}
+\newcommand{\tpa}{{\overline{\pa}}}
+\newcommand{\pa}{{\partial}}
+\newcommand{\tphi}{{\tilde{\phi}}}
+\newcommand{\at}{{\tilde t}}
+\newcommand{\apsi}{{\tilde \psi}}
+\newcommand{\aphi}{{\tilde u}}
+\newcommand{\tq}{{\tilde q}}
+\newcommand{\tQ}{{\tilde Q}}
+\newcommand{\tc}{{\tilde c}}
+\newcommand{\tchi}{{\tilde \chi}}
+\newcommand{\tf}{{\tilde f}}
+\newcommand{\td}{{\tilde \delta}}
+\newcommand{\gr}{{\tilde r}}
+\newcommand{\ax}{{\tilde x}}
+\newcommand{\aPhi}{{\tilde u}}
+\newcommand{\aGamma}{{\tilde \Lambda}}
+\newcommand{\Qsr}{{\mathcal Q_{sr}}}
+\newcommand{\lL}{{\underline L}}
+\newcommand{\ts}{{\tilde{s}}}
+\newcommand{\rs}{{\tilde r}}
+
+\newcommand{\newsection}[1]
+{\section{#1}\setcounter{theorem}{0} \setcounter{equation}{0}
+\par\noindent}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+%\renewcommand{\thesubsection}{\arabic{section}}
+\newtheorem{theorem}{Theorem}
+\renewcommand{\thetheorem}{\arabic{section}.\arabic{theorem}}
+
+\newenvironment{solution}{\begin{quotation}{}{\leftmargin .25in\rightmargin .25in}}
+               {\end{quotation}\par\bigskip}
+
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corr}[theorem]{Corollary}
+\newtheorem{prop}[theorem]{Prop}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\WF}{\text{WF}}
+\newcommand{\cd}{\, \cdot\, }
+\newcommand{\supp}{\text{supp }}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\ext}{{\R^3\backslash\mathcal{K}}}
+\newcommand{\extn}{{\R^n\backslash\mathcal{K}}}
+\newcommand{\bdy}{{\partial\mathcal{K}}}
+\newcommand{\diag}{{\text {diag}}}
+\newcommand{\ang}{{\not\negmedspace\partial }}
+\newcommand{\T}{{T_\varepsilon}}
+\newcommand{\W}{{\mathcal{W}}}
+\newcommand{\K}{{\mathcal{K}}}
+\renewcommand{\L}{{\mathcal{L}}}
+\newcommand{\n}{{\vec{n}}}
+\renewcommand{\ss}[1]{{\substack{#1}}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\LE}{\mathcal{LE}}
+\renewcommand{\div}{{\text{div}}}
+%\renewcommand{\L}{{\tilde{L}}}
+%\newcommand{\1}{{\mathbf 1}}
+\newcommand{\e}{\epsilon}
+%\newcommand{\rs}{{r^*}}
+\newcommand{\rso}{{r_0^*}}
+\renewcommand{\S}{{\mathbb S}}
+\newcommand{\M}{\mathcal M}
+\newcommand{\tu}{{\tilde{u}}}
+\newcommand{\tv}{{\tilde{v}}}
+\newcommand{\tJ}{{\tilde{J}}}
+\newcommand{\tg}{{\tilde{g}}}
+\newcommand{\tY}{{\tilde{Y}}}
+\newcommand{\tN}{{\tilde{N}}}
+\newcommand{\hG}{\hat{\Lambda}}
+\renewcommand{\th}{{\tilde{h}}}
+\newcommand{\uL}{\underline{L}}
+
+
+\newcommand{\subheading}[1]{{\bf #1}}
+
+\newenvironment{com}{\begin{quotation}{\leftmargin .25in\rightmargin .25in}\sffamily \footnotesize $\clubsuit$}
+               {$\spadesuit$\end{quotation}\par\bigskip}
+\newenvironment{com2}{\sffamily\footnotesize $\clubsuit$ }{ $\spadesuit$}
+
+
+\newcommand{\weight}{{\Bigl(1-\frac{2M}{r}\Bigr)}}
+\renewcommand{\tr}{\text{tr}\ }
+
+
+\begin{document}
+
+\title
+{
+Differential Geometry: Problem Set 8 }
+\author{Nicholas Arsenault}
+
+\maketitle
+\emph{\emph{}}
+\begin{enumerate}
+  \item[1.] Using the symmetry of the connection and the fact that $\nabla _{X} X = 0$, we can say
+    \begin{align*}
+      \nabla _{X+Y} (X+Y) = 0
+    \end{align*}
+    which combined with $\nabla _{X}Y - \nabla _{Y}X = [X,Y]$ gives $\nabla _{X}Y = \frac{1}{2} [X,Y]$.  Secondly, using the defintion
+    \begin{align*}
+      R(X,Y)Z &= \nabla _{Y} \nabla _{X} Z - \nabla _{X} \nabla _{Y} + \nabla _{[X,Y]}Z \\
+              &= \frac{1}{2} \nabla _{Y} [X,Z] - \frac{1}{2} \nabla _{X} [Y,Z] + [[X,Y],Z] \\
+              &= \frac{1}{4} [Y, [X,Z]] - \frac{1}{4} [X,[Y,Z]] + \frac{1}{2} [[X,Y],Z] \\
+              &= \frac{1}{4} \left([Y,[X,Z]] - [X,[Y,Z]] + [[X,Y],Z] \right) + \frac{1}{4} [[X,Y],Z] \\
+              &= \frac{1}{4} \left([[X,Y],Z] + [[Y,Z],X] + [[Z,X],Y] \right) + \frac{1}{4} [[X,Y],Z] \\
+              &= \frac{1}{4} [[X,Y],Z].
+    \end{align*}
+Finally, 
+\begin{align*}
+  K(\sigma)(X,Y) &= \left<R(X,Y)X,Y) \right> \\
+                 &= \left<\frac{1}{4}[[X,Y],X],Y] \right> \\
+                 &= -\frac{1}{4}\left<[X,Y],[Y,X] \right> \\
+                 &= \frac{1}{4} \|[X,Y]\|^2.
+\end{align*}
+The second to last equality holds by (3.) on Pg. 40, and the denominator of the sectional curvature is $1$, since $X,Y$ are assumed to be orthonormal.
+
+\item[7.]
+\end{enumerate}
+\end{document}
